@@ -1,4 +1,5 @@
 # https-github.com-fudail-rafiq-c-codes25
+// operators
 #include<stdio.h>
 int main()
 {
