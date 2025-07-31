@@ -251,3 +251,159 @@ int main() {
 
     return 0;
 }
+//Loops
+    
+//Display the series: 1 2 3 4 5 .... n (using loops)
+
+
+#include <stdio.h>
+int main() {
+    int n, i;
+    printf("Enter n: ");
+    scanf("%d", &n);
+
+    for (i = 1; i <= n; i++) {
+        printf("%d ", i);
+    }
+    return 0;
+}
+----------------------------------------------------------------
+//Display the series: n n-1 n-2 …. 3 2 1  (using loops)
+
+#include <stdio.h>
+int main() {
+    int n, i;
+    printf("Enter n: ");
+    scanf("%d", &n);
+
+    for (i = n; i >= 1; i--) {
+        printf("%d ", i);
+    }
+    return 0;
+}
+
+----------------------------------------------------------------
+
+//Display all even numbers from 1 to 100.  (using loop and if)
+#include <stdio.h>
+
+int main() {
+    int i;
+    for (i = 1; i <= 100; i++) {
+        if (i % 2 == 0) {
+            printf("%d ", i);
+        }
+    }
+    return 0;
+    }
+    
+    
+    ----------------------------------------------------------------
+//Find sum of series: 1 2 3 4 5 .... n 
+
+
+#include <stdio.h>
+
+int main() {
+    int n, i, sum = 0;
+    printf("Enter n: ");
+    scanf("%d", &n);
+
+    for (i = 1; i <= n; i++) {
+        sum += i;
+    }
+
+    printf("Sum = %d\n", sum);
+    return 0;
+}
+
+----------------------------------------------------------------
+
+//Find product of series: 1 2 3 4 5 .... n .
+
+#include <stdio.h>
+
+int main() {
+    int n, i;
+    unsigned long long product = 1;
+    printf("Enter n: ");
+    scanf("%d", &n);
+
+    for (i = 1; i <= n; i++) {
+        product *= i;
+    }
+
+    printf("Product = %llu\n", product);
+    return 0;
+}
+
+----------------------------------------------------------------
+
+//Finding the factorial of a number entered by the user.
+#include <stdio.h>
+
+int main() {
+    int n, i;
+    unsigned long long fact = 1;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    if (n < 0)
+        printf("Factorial not defined for negative numbers.\n");
+    else {
+        for (i = 1; i <= n; i++) {
+            fact *= i;
+        }
+        printf("Factorial = %llu\n", fact);
+    }
+    return 0;
+}
+
+----------------------------------------------------------------
+
+//Finding all the factors of a natural number.
+#include <stdio.h>
+int main() {
+    int n, i;
+    printf("Enter a natural number: ");
+    scanf("%d", &n);
+
+    printf("Factors of %d are: ", n);
+    for (i = 1; i <= n; i++) {
+        if (n % i == 0) {
+            printf("%d ", i);
+        }
+    }
+    return 0;
+}
+
+
+----------------------------------------------------------------
+
+//Checking whether a given number is prime.
+
+#include <stdio.h>
+
+int main() {
+    int n, i, isPrime = 1;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    if (n <= 1) {
+        isPrime = 0;
+    } else {
+        for (i = 2; i <= n / 2; i++) {
+            if (n % i == 0) {
+                isPrime = 0;
+                break;
+            }
+        }
+    }
+
+    if (isPrime)
+        printf("%d is a prime number.\n", n);
+    else
+        printf("%d is not a prime number.\n", n);
+
+    return 0;
+}
