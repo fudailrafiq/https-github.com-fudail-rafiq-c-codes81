@@ -789,3 +789,22 @@ int main(){
        return 0;
 
 }
+//Fibonacci using recursion
+#include<stdio.h>
+int func(int i){
+	if(i<1){
+		return i;
+	}
+	else{
+		return func(i-1)+func(i-2);
+		
+	}
+}
+int main(){
+	int n,i=0;
+	printf("enter number of terms");
+	scanf("%d",&n);
+	for(i=0;i<n;i++){
+		printf("%d",func(i));
+	}
+}
