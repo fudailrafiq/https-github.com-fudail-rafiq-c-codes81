@@ -822,3 +822,40 @@ int main() {
     printf("%llu\n", fact);
     return 0;
 }
+#include<stdio.h>
+struct stud
+{
+	int roll;
+	char name[30];
+	int age;
+	struct stud *next;
+};
+int main ()
+{
+	struct stud n1,n2,n3;
+	struct stud*p;
+	
+	printf("Enter roll, name, and age for student 1: ");
+	scanf ("%d %s %d",&n1.roll,n1.name,&n1.age);
+	
+	
+	printf ("Enter roll, name , age of student 2:");
+	scanf ("%d %s %d",&n2.roll,n2.name,&n2.age);
+	
+	printf ("Enter roll , name , age of student 3:");
+	scanf ("%d %s %d",&n3.roll,n3.name,&n3.age);
+	
+	
+	n1.next=&n2;
+	n2.next=&n3;
+	n3.next=NULL;
+	 printf("\nStudent Details:\n");
+    p = &n1;
+    while (p != NULL) {
+        printf("Roll: %d, Name: %s, Age: %d\n", p->roll, p->name, p->age);
+        p = p->next;
+    }
+
+    return 0;
+}
+
