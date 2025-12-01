@@ -1110,6 +1110,109 @@ int main() {
     t.getData();
     s = &t;
     cout << "Area of Triangle: " << s->area() << endl;
+#include <iostream>
+#include <string>
+using namespace std;
+
+// ===============================
+// Base Class 1: Teacher
+// ===============================
+class Teacher {
+protected:
+    string teacherName;
+    string subject;
+    int experience; // years of experience
+
+public:
+    void getTeachingInfo() {
+        cout << "Enter Teacher Name       : ";
+        getline(cin, teacherName);
+
+        cout << "Enter Subject Taught     : ";
+        getline(cin, subject);
+
+        cout << "Enter Years of Experience: ";
+        cin >> experience;
+        cin.ignore();
+    }
+
+    void displayTeachingInfo() const {
+        cout << "Teacher Name     : " << teacherName << endl;
+        cout << "Subject Taught   : " << subject << endl;
+        cout << "Experience       : " << experience << " years" << endl;
+    }
+};
+
+// ===============================
+// Base Class 2: Researcher
+// ===============================
+class Researcher {
+protected:
+    string researchArea;
+    int publications;
+
+public:
+    void getResearchInfo() {
+        cout << "Enter Research Area      : ";
+        getline(cin, researchArea);
+
+        cout << "Enter Publications Count : ";
+        cin >> publications;
+        cin.ignore();
+    }
+
+    void displayResearchInfo() const {
+        cout << "Research Area   : " << researchArea << endl;
+        cout << "Publications    : " << publications << endl;
+    }
+};
+
+// ===============================
+// Derived Class: Faculty (Multiple Inheritance)
+// ===============================
+class Faculty : public Teacher, public Researcher {
+private:
+    string facultyID;
+
+public:
+    void getFacultyInfo() {
+        cout << "Enter Faculty ID         : ";
+        getline(cin, facultyID);
+    }
+
+    void displayFacultyProfile() const {
+        cout << "\n========== FACULTY PROFILE ==========\n";
+
+        cout << "-- Teaching Information --\n";
+        displayTeachingInfo();
+
+        cout << "\n-- Research Information --\n";
+        displayResearchInfo();
+
+        cout << "\nFaculty ID      : " << facultyID << endl;
+        cout << "======================================\n";
+    }
+};
+
+// ===============================
+// Main Function
+// ===============================
+int main() {
+    Faculty f;
+
+    cout << "Enter Teaching Information:\n";
+    f.getTeachingInfo();
+
+    cout << "\nEnter Research Information:\n";
+    f.getResearchInfo();
+
+    cout << "\nEnter Faculty Identity Information:\n";
+    f.getFacultyInfo();
+
+    f.displayFacultyProfile();
+
+    return 0;
+}
 
     return 0;
 }
