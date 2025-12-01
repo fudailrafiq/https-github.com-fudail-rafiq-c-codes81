@@ -1404,6 +1404,113 @@ int main() {
 
     return 0;
 }
+#include <iostream>
+using namespace std;
+
+// ==============================================
+// Base Class: Account
+// ==============================================
+class Account {
+protected:
+    double balance;
+
+public:
+    Account() {
+        balance = 0.0;   // initial balance
+    }
+
+    Account(double initialBalance) {
+        balance = initialBalance;
+    }
+};
+
+// ==============================================
+// Derived Class: SavingsAccount
+// ==============================================
+class SavingsAccount : public Account {
+public:
+
+    // Constructor that calls base class constructor
+    SavingsAccount(double initialBalance) : Account(initialBalance) {}
+
+    void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            cout << "Deposited: Rs. " << amount << endl;
+        } else {
+            cout << "Invalid deposit amount!" << endl;
+        }
+    }
+
+    void withdraw(double amount) {
+        if (amount <= 0) {
+            cout << "Invalid withdrawal amount!" << endl;
+        } 
+        else if (amount > balance) {
+            cout << "Insufficient balance!" << endl;
+        }
+        else {
+            balance -= amount;
+            cout << "Withdrawn: Rs. " << amount << endl;
+        }
+    }
+
+    void displayBalance() const {
+        cout << "Current Balance: Rs. " << balance << endl;
+    }
+};
+
+// ==============================================
+// Main Function
+// ==============================================
+int main() {
+    double initial;
+    cout << "Enter initial balance: ";
+    cin >> initial;
+
+    SavingsAccount acc(initial);
+
+    int choice;
+    double amount;
+
+    do {
+        cout << "\n===== BANK MENU =====\n";
+        cout << "1. Deposit\n";
+        cout << "2. Withdraw\n";
+        cout << "3. Display Balance\n";
+        cout << "4. Exit\n";
+        cout << "Choose an option: ";
+        cin >> choice;
+
+        switch(choice) {
+            case 1:
+                cout << "Enter deposit amount: ";
+                cin >> amount;
+                acc.deposit(amount);
+                break;
+
+            case 2:
+                cout << "Enter withdrawal amount: ";
+                cin >> amount;
+                acc.withdraw(amount);
+                break;
+
+            case 3:
+                acc.displayBalance();
+                break;
+
+            case 4:
+                cout << "Exiting..." << endl;
+                break;
+
+            default:
+                cout << "Invalid choice! Enter again.\n";
+        }
+
+    } while(choice != 4);
+
+    return 0;
+}
 
     return 0;
 }
