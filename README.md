@@ -1213,6 +1213,117 @@ int main() {
 
     return 0;
 }
+#include <iostream>
+#include <string>
+using namespace std;
+
+// =====================================
+// Base Class: Student
+// =====================================
+class Student {
+protected:
+    string name;
+    int roll;
+
+public:
+    void getStudentInfo() {
+        cout << "Enter Student Name: ";
+        getline(cin, name);
+
+        cout << "Enter Roll Number : ";
+        cin >> roll;
+        cin.ignore();
+    }
+
+    void displayStudentInfo() const {
+        cout << "Name        : " << name << endl;
+        cout << "Roll Number : " << roll << endl;
+    }
+};
+
+// =====================================
+// Derived Class 1: Sports (virtual)
+// =====================================
+class Sports : virtual public Student {
+protected:
+    float sportsScore;
+
+public:
+    void getSportsScore() {
+        cout << "Enter Sports Score (out of 100): ";
+        cin >> sportsScore;
+        cin.ignore();
+    }
+
+    void displaySportsScore() const {
+        cout << "Sports Score : " << sportsScore << endl;
+    }
+};
+
+// =====================================
+// Derived Class 2: Academics (virtual)
+// =====================================
+class Academics : virtual public Student {
+protected:
+    float academicScore;
+
+public:
+    void getAcademicScore() {
+        cout << "Enter Academic Score (out of 100): ";
+        cin >> academicScore;
+        cin.ignore();
+    }
+
+    void displayAcademicScore() const {
+        cout << "Academic Score : " << academicScore << endl;
+    }
+};
+
+// =====================================
+// Derived Class: Result (from Sports & Academics)
+// =====================================
+class Result : public Sports, public Academics {
+private:
+    float finalScore;
+
+public:
+    void computeResult() {
+        // Weighted combined score (can modify as needed)
+        finalScore = (academicScore * 0.7f) + (sportsScore * 0.3f);
+    }
+
+    void displayResult() const {
+        cout << "\n=========== STUDENT RESULT ===========\n";
+        displayStudentInfo();
+        displayAcademicScore();
+        displaySportsScore();
+
+        cout << "--------------------------------------\n";
+        cout << "Final Combined Score : " << finalScore << endl;
+        cout << "======================================\n";
+    }
+};
+
+// =====================================
+// Main Function
+// =====================================
+int main() {
+    Result r;
+
+    cout << "Enter Student Details:\n";
+    r.getStudentInfo();
+
+    cout << "\nEnter Academic Details:\n";
+    r.getAcademicScore();
+
+    cout << "\nEnter Sports Details:\n";
+    r.getSportsScore();
+
+    r.computeResult();
+    r.displayResult();
+
+    return 0;
+}
 
     return 0;
 }
