@@ -932,4 +932,90 @@ public:
     }
 };
 
-// ===========================
+// ==============================
+// Further Derived Class: Result (from Student)
+// ==============================
+class Result : public Student {
+private:
+    int subjects;
+    float *marks;
+    float total, average;
+    char grade;
+
+public:
+    Result() {
+        marks = nullptr;
+        subjects = 0;
+        total = 0;
+        average = 0;
+        grade = 'F';
+    }
+
+    void getMarks() {
+        cout << "Enter number of subjects: ";
+        cin >> subjects;
+
+        marks = new float[subjects];
+
+        cout << "\nEnter marks:\n";
+        for (int i = 0; i < subjects; i++) {
+            cout << "Subject " << i + 1 << ": ";
+            cin >> marks[i];
+            total += marks[i];
+        }
+
+        average = total / subjects;
+
+        // Simple grading logic
+        if (average >= 90) grade = 'A';
+        else if (average >= 75) grade = 'B';
+        else if (average >= 60) grade = 'C';
+        else if (average >= 40) grade = 'D';
+        else grade = 'F';
+
+        cin.ignore();
+    }
+
+    void displayResult() const {
+        cout << fixed << setprecision(2);
+        cout << "\n---------- PERFORMANCE SUMMARY ----------\n";
+
+        displayPersonalInfo();
+        displayStudentDetails();
+
+        cout << "\nMarks Obtained:\n";
+        for (int i = 0; i < subjects; i++) {
+            cout << "Subject " << i + 1 << ": " << marks[i] << endl;
+        }
+
+        cout << "\nTotal Marks : " << total << endl;
+        cout << "Average     : " << average << endl;
+        cout << "Grade       : " << grade << endl;
+
+        cout << "-----------------------------------------\n";
+    }
+
+    ~Result() {
+        delete[] marks;
+    }
+};
+
+// ==============================
+// Main Function
+// ==============================
+int main() {
+    Result r;
+
+    cout << "Enter Personal Information\n";
+    r.getPersonalInfo();
+
+    cout << "\nEnter Academic Details\n";
+    r.getStudentDetails();
+
+    cout << "\nEnter Marks\n";
+    r.getMarks();
+
+    r.displayResult();
+
+    return 0;
+}
