@@ -880,3 +880,56 @@ int main()
 
     
 }
+#include <iostream>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+// ==============================
+// Base Class: Person
+// ==============================
+class Person {
+protected:
+    string name;
+    int age;
+
+public:
+    void getPersonalInfo() {
+        cout << "Enter Name: ";
+        getline(cin, name);
+
+        cout << "Enter Age: ";
+        cin >> age;
+        cin.ignore();
+    }
+
+    void displayPersonalInfo() const {
+        cout << "Name: " << name << endl;
+        cout << "Age : " << age  << endl;
+    }
+};
+
+// ==============================
+// Derived Class: Student (from Person)
+// ==============================
+class Student : public Person {
+protected:
+    string rollNo;
+    string course;
+
+public:
+    void getStudentDetails() {
+        cout << "Enter Roll Number: ";
+        getline(cin, rollNo);
+
+        cout << "Enter Course: ";
+        getline(cin, course);
+    }
+
+    void displayStudentDetails() const {
+        cout << "Roll Number: " << rollNo << endl;
+        cout << "Course     : " << course << endl;
+    }
+};
+
+// ===========================
