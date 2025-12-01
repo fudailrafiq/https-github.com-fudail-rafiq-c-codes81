@@ -1324,6 +1324,86 @@ int main() {
 
     return 0;
 }
+#include <iostream>
+#include <string>
+using namespace std;
+
+// ==================================
+// Base Class: Student
+// ==================================
+class Student {
+protected:
+    string name;
+    int roll;
+
+public:
+    void getStudentInfo() {
+        cout << "Enter Student Name : ";
+        getline(cin, name);
+
+        cout << "Enter Roll Number  : ";
+        cin >> roll;
+    }
+
+    void displayStudentInfo() const {
+        cout << "Name         : " << name << endl;
+        cout << "Roll Number  : " << roll << endl;
+    }
+};
+
+// ==================================
+// Derived Class: Marks
+// ==================================
+class Marks : public Student {
+private:
+    float m1, m2, m3;
+    float total, percentage;
+
+public:
+    void getMarks() {
+        cout << "\nEnter marks of 3 subjects:\n";
+        cout << "Subject 1 : ";
+        cin >> m1;
+        cout << "Subject 2 : ";
+        cin >> m2;
+        cout << "Subject 3 : ";
+        cin >> m3;
+    }
+
+    void calculate() {
+        total = m1 + m2 + m3;
+        percentage = (total / 300.0f) * 100;
+    }
+
+    void displayReport() const {
+        cout << "\n=========== ACADEMIC REPORT ===========\n";
+        displayStudentInfo();
+
+        cout << "\nMarks:\n";
+        cout << "Subject 1 : " << m1 << endl;
+        cout << "Subject 2 : " << m2 << endl;
+        cout << "Subject 3 : " << m3 << endl;
+
+        cout << "\nTotal Marks   : " << total << " / 300" << endl;
+        cout << "Percentage    : " << percentage << "%" << endl;
+        cout << "========================================\n";
+    }
+};
+
+// ==================================
+// Main Function
+// ==================================
+int main() {
+    Marks student;
+
+    student.getStudentInfo();
+    student.getMarks();
+
+    student.calculate();
+    student.displayReport();
+
+    return 0;
+}
 
     return 0;
 }
