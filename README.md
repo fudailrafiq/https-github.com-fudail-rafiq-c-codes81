@@ -1019,3 +1019,97 @@ int main() {
 
     return 0;
 }
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+// ===============================
+// Base Class: Shape
+// ===============================
+class Shape {
+public:
+    // Virtual function to be overridden by derived classes
+    virtual float area() = 0;     // Pure virtual function
+};
+
+// ===============================
+// Derived Class: Circle
+// ===============================
+class Circle : public Shape {
+private:
+    float radius;
+
+public:
+    void getData() {
+        cout << "Enter radius of circle: ";
+        cin >> radius;
+    }
+
+    float area() override {
+        return 3.14159f * radius * radius;
+    }
+};
+
+// ===============================
+// Derived Class: Rectangle
+// ===============================
+class Rectangle : public Shape {
+private:
+    float length, width;
+
+public:
+    void getData() {
+        cout << "Enter length and width of rectangle: ";
+        cin >> length >> width;
+    }
+
+    float area() override {
+        return length * width;
+    }
+};
+
+// ===============================
+// Derived Class: Triangle
+// ===============================
+class Triangle : public Shape {
+private:
+    float base, height;
+
+public:
+    void getData() {
+        cout << "Enter base and height of triangle: ";
+        cin >> base >> height;
+    }
+
+    float area() override {
+        return 0.5f * base * height;
+    }
+};
+
+// ===============================
+// Main Function
+// ===============================
+int main() {
+    Shape* s;  // Base class pointer
+
+    Circle c;
+    Rectangle r;
+    Triangle t;
+
+    cout << "\n--- Circle ---\n";
+    c.getData();
+    s = &c;
+    cout << "Area of Circle: " << s->area() << endl;
+
+    cout << "\n--- Rectangle ---\n";
+    r.getData();
+    s = &r;
+    cout << "Area of Rectangle: " << s->area() << endl;
+
+    cout << "\n--- Triangle ---\n";
+    t.getData();
+    s = &t;
+    cout << "Area of Triangle: " << s->area() << endl;
+
+    return 0;
+}
